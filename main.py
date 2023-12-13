@@ -9,12 +9,12 @@ with db.connect("lietotajs.db") as con:
 def izveidot_lietotaju(nikneims, parole):
     cur.execute('INSERT INTO Lietotajs (nikneims, parole) VALUES (?, ?)', (nikneims, parole))
     con.commit()
-    con.close()
+    #con.close()
 
 def parbaudit_lietotaju(nikneims, parole):
     cur.execute('SELECT * FROM Lietotajs WHERE nikneims=? AND parole=?', (nikneims, parole))
     result = cur.fetchone()
-    con.close()
+    #con.close()
     return result is not None
 
 def registracijas_loga_poga():
@@ -40,7 +40,7 @@ def pieteikuma_loga_poga():
         messagebox.showwarning("Kļūda", "Lūdzu, aizpildiet visus laukus.")
 
 
-# Izveidojam galveno logu
+# galvenais logs
 logs = tk.Tk()
 logs.title("Spēles Logins")
 
@@ -78,6 +78,6 @@ login_parole_entry.grid(row=2, column=1, pady=5)
 pieteikuma_poga = tk.Button(pieteikuma_loga, text="Pieteikties", command=pieteikuma_loga_poga)
 pieteikuma_poga.grid(row=3, column=1, pady=10)
 
-# Palaižam logu
+
 logs.mainloop()
   
